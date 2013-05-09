@@ -46,7 +46,6 @@ osmLayer.addTo(map);
 geojson([40.67, -73.94], {radius: 10000, limit: 50}, function(data) {
     L.geoJson(data).addTo(map)
 });
-
 ```
 
 That's it, to get the basic functionality working. Open example.html for a
@@ -58,11 +57,11 @@ Develop
 If you want to hack on wikigeo you'll need a [node](http://nodejs.org) and
 then you'll need to install some dependencies for testing:
 
-  npm install
+    npm install
 
 This will install cake, which you can use to run the tests:
 
-  cake test
+    cake test
 
 License
 -------
