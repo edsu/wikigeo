@@ -33,7 +33,7 @@ Quick Start With Leaflet
 
 In your HTML, you'll want to use Leaflet as usual:
 
-```html
+```javascript
 
 // create the map
 
