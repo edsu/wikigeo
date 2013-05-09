@@ -63,6 +63,21 @@ This will install cake, which you can use to run the tests:
 
     cake test
 
+and you should see something like:
+
+```
+  wikigeo
+    geojson
+      ✓ should work with just lat/lon (202ms)
+      ✓ should return empty results when there are no hits (136ms)
+      ✓ limit should cause more results to come in (438ms)
+      ✓ respects maximum limit
+      ✓ respects maximum radius
+
+
+  5 tests complete (781 ms)
+```
+
 License
 -------
 
