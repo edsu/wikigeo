@@ -126,6 +126,8 @@ _convert = (results, callback) ->
     url = "http://en.wikipedia.org/wiki/#{titleEscaped}"
 
     if article.pageprops
+      # TODO: convert to full URL w/r/t
+      # https://www.mediawiki.org/wiki/Manual:$wgHashedUploadDirectory
       image = article.pageprops.page_image
     else
       image = null
