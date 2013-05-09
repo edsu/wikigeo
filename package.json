@@ -1,0 +1,10 @@
+{
+  "name": "wikigeo",
+  "version": "0.0.1",
+  "dependencies": {
+    "request": "latest",
+    "mocha": "latest",
+    "chai": "latest",
+    "coffee-script": "latest"
+  }
+}
