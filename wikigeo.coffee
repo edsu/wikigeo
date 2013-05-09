@@ -1,9 +1,38 @@
-geojson = (latlon, opts, callback) =>
+###
+
+geojson takes a latitude and longitude and a callback that will be given 
+geojson for Wikipedia articles that are relevant for that location
+
+options:
+  radius: search radius in meters (default: 1000, max: 10000)
+  limit: the number of wikipedia articles to limit to (default: 10, max: 500)
+
+example:
+  geojson([39.0114, -77.0155], {radius: 5000}, function(data) {
+    console.log(data);
+  })
+
+###
+
+geojson = (latlon, opts={}, callback) =>
+  if typeof opts == "function"
+    callback = opts
+    opts = {}
   opts.limit = 10 if not opts.limit
   opts.radius = 10000 if not opts.radius
+
+  if opts.radius > 10000
+    throw new Error("radius cannot be greater than 10000")
+
+  if opts.limit > 500
+    throw new Error("limit cannot be greater than 500")
+
   _search(latlon[0], latlon[1], opts.radius, opts.limit, callback)
 
+
+#
 # recursive function to collect the results from all search result pages
+#
 
 _search = (lat, lon, radius, limit, callback, results, queryContinue) =>
   url = "http://en.wikipedia.org/w/api.php"
@@ -31,8 +60,14 @@ _search = (lat, lon, radius, limit, callback, results, queryContinue) =>
         q[param] = queryContinue[name][param]
 
   fetch url, params: q, (response) =>
+
     if not results
       results = response
+
+    # no results, oh well just give them empty geojson
+    if not (response.query and response.query.pages)
+      _convert(results, callback)
+      return
 
     for articleId, article of response.query.pages
       resultsArticle = results.query.pages[articleId]
@@ -67,16 +102,62 @@ _search = (lat, lon, radius, limit, callback, results, queryContinue) =>
       _search(lat, lon, radius, limit, callback, results, queryContinue)
 
     else
-      # all done
-      # TODO: convert to geojson
-      callback(results)
+      _convert(results, callback)
+
+
+#
+# do the work of converting a wikipedia response to geojson
+#
+
+_convert = (results, callback) ->
+  geo =
+    type: "FeatureCollection"
+    features: []
+
+  if not (results and results.query and results.query.pages)
+    callback(geo)
+    return
+
+  for articleId, article of results.query.pages
+    if not article.coordinates
+      continue
+
+    titleEscaped = article.title.replace /\s/g, "_"
+    url = "http://en.wikipedia.org/wiki/#{titleEscaped}"
+
+    if article.pageprops
+      image = article.pageprops.page_image
+    else
+      image = null
+
+    geo.features.push
+      id: url
+      type: "Feature"
+      properties:
+        name: article.title
+        summary: article.extract
+        image: image
+      geometry:
+        type: "Point"
+        coordinates: [
+          (Number) article.coordinates[0].lon
+          (Number) article.coordinates[0].lat
+        ]
+
+  callback(geo)
+  return
+
+#
+# helpers for doing http in browser (w/ jQuery) and in node (w/ request)
+#
 
 _fetch = (uri, opts, callback) ->
   request uri, qs: opts.params, json: true, (e, r, data) ->
     callback(data)
 
 _browserFetch = (uri, opts, callback) ->
-  $.ajax url: url, data: opts.params, dataType: "jsonp", success: callback
+  $.ajax url: uri, data: opts.params, dataType: "jsonp", success: (response) ->
+      callback(response)
 
 try
   request = require('request')
@@ -85,4 +166,4 @@ catch error
   fetch = _browserFetch
 
 root = exports ? this
-root.wikigeo = wikigeo
+root.geojson = geojson
