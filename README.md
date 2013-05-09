@@ -1,7 +1,7 @@
 wikigeo
 =======
 
-wikigeo provides a mechanism to fetch georss for wikipedia articles around
+wikigeo allows you to easily fetch georss for wikipedia articles around
 a given geographic coordinate. It can easily be slotted into working with 
 [Leaflet](http://leafletjs.com/)'s 
 [geojson support](http://leafletjs.com/examples/geojson.html).
