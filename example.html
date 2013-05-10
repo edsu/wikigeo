@@ -17,7 +17,6 @@
       <script>
         $(document).ready(function() {
 
-          // create the leaflet map, with openstreetmap tiles
           var map = L.map('map').setView([40.67, -73.94], 13);
           var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {});
           osmLayer.addTo(map);
