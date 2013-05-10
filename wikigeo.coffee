@@ -25,6 +25,9 @@ geojson = (geo, opts={}, callback) =>
   opts.limit = 10 if not opts.limit
   opts.radius = 10000 if not opts.radius
 
+  if not opts.language
+    opts.language = "en"
+
   if opts.radius > 10000
     throw new Error("radius cannot be greater than 10000")
 
@@ -39,13 +42,10 @@ geojson = (geo, opts={}, callback) =>
 #
 
 _search = (geo, opts, callback, results, queryContinue) =>
-  url = "http://en.wikipedia.org/w/api.php"
+  url = "http://#{ opts.language }.wikipedia.org/w/api.php"
   q =
     action: "query"
     prop: "info|coordinates"
-    exlimit: "max"
-    exintro: 1
-    explaintext: 1
     generator: "geosearch"
     ggsradius: opts.radius
     ggscoord: "#{geo[1]}|#{geo[0]}"
@@ -57,6 +57,9 @@ _search = (geo, opts, callback, results, queryContinue) =>
 
   if opts.summaries
     q.prop += "|extracts"
+    q.exlimit = "max"
+    q.exintro = 1
+    q.explaintext = 1
 
   if opts.templates
     q.prop += "|templates"
@@ -146,7 +149,7 @@ _convert = (results, opts, callback) ->
       continue
 
     titleEscaped = article.title.replace /\s/g, "_"
-    url = "http://en.wikipedia.org/wiki/#{titleEscaped}"
+    url = "http://#{ opts.language }.wikipedia.org/wiki/#{titleEscaped}"
 
     feature =
       id: url

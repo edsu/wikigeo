@@ -37,6 +37,9 @@ example:
     if (!opts.radius) {
       opts.radius = 10000;
     }
+    if (!opts.language) {
+      opts.language = "en";
+    }
     if (opts.radius > 10000) {
       throw new Error("radius cannot be greater than 10000");
     }
@@ -49,13 +52,10 @@ example:
   _search = function(geo, opts, callback, results, queryContinue) {
     var continueParams, name, param, q, url;
 
-    url = "http://en.wikipedia.org/w/api.php";
+    url = "http://" + opts.language + ".wikipedia.org/w/api.php";
     q = {
       action: "query",
       prop: "info|coordinates",
-      exlimit: "max",
-      exintro: 1,
-      explaintext: 1,
       generator: "geosearch",
       ggsradius: opts.radius,
       ggscoord: "" + geo[1] + "|" + geo[0],
@@ -67,6 +67,9 @@ example:
     }
     if (opts.summaries) {
       q.prop += "|extracts";
+      q.exlimit = "max";
+      q.exintro = 1;
+      q.explaintext = 1;
     }
     if (opts.templates) {
       q.prop += "|templates";
@@ -164,7 +167,7 @@ example:
         continue;
       }
       titleEscaped = article.title.replace(/\s/g, "_");
-      url = "http://en.wikipedia.org/wiki/" + titleEscaped;
+      url = "http://" + opts.language + ".wikipedia.org/wiki/" + titleEscaped;
       feature = {
         id: url,
         type: "Feature",
