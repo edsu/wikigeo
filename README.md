@@ -160,6 +160,8 @@ geojson feature properties by setting any of the following options to true:
 geojson(
   [-73.94, 40.67], 
   {
+    limit: 5,
+    radius: 1000,
     images: true, 
     categories: true, 
     summaries: true,
