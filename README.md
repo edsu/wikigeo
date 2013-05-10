@@ -156,7 +156,7 @@ Additional Wikipedia Properties
 
 Additional properties of the Wikipedia articles can be added to the
 geojson feature properties by setting any of the following options to true: 
-`images`, `categories`, `summaries`.  `templates`.  For example:
+`images`, `categories`, `summaries`,  `templates`.  For example:
 
 ```javascript
 geojson(
