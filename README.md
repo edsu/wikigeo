@@ -339,7 +339,7 @@ working example.
 Develop
 -------
 
-If you want to hack on wikigeo you'll need a [node](http://nodejs.org) and
+If you want to hack on wikigeo you'll need [Node](http://nodejs.org) and
 then you'll need to install some dependencies for testing:
 
     npm install
