@@ -3,7 +3,10 @@ wikigeo
 
 wikigeo allows you to fetch [geojson](http://www.geojson.org/geojson-spec.html)
 for [Wikipedia](http://wikipedia.org) articles around a given geographic
-coordinate. It can be easily added to a map using [Leaflet's geojson support](http://leafletjs.com/examples/geojson.html).
+coordinate. It can be easily added to a map using [Leaflet's geojson
+support](http://leafletjs.com/examples/geojson.html). The data comes directly
+from the [Wikipedia API](http://en.wikipedia.org/w/api.php) which has the
+[GeoData](http://www.mediawiki.org/wiki/Extension:GeoData) extension installed.
 
 ![Leaflet Screenshot](http://edsu.github.io/wikigeo/img/screenshot.png)
 
