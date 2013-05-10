@@ -9,7 +9,7 @@ Basics
 ------
 
 When you add wikigeo.js to your HTML page you will get a function called 
-`geojson` which you pass a coordinate [longitude, latitude] and a callback 
+`geojson` which you pass a coordinate `[longitude, latitude]` and a callback 
 that will receive the geojson data:
 
 ```javascript
