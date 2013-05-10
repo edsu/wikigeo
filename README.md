@@ -154,7 +154,7 @@ geojson([-73.94, 40.67], {radius: 10000, limit: 100}, function(data) {
 Additional Wikipedia Properties
 -------------------------------
 
-Additional properties of the Wikipedia articles returned can be added to the
+Additional properties of the Wikipedia articles can be added to the
 geojson feature properties by setting any of the following options to true: 
 `images`, `categories`, `summaries`.  `templates`.  For example:
 
