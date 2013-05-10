@@ -17,13 +17,12 @@
       <script>
         $(document).ready(function() {
 
+          // make a leaflet map with openstreetmap tiles
           var map = L.map('map').setView([40.67, -73.94], 13);
           var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {});
           osmLayer.addTo(map);
 
-          // create the wikipedia layer and add to it using geojson results
-          // for the given coordinates
-
+          // get the geojson and add to the map
           geojson([-73.94, 40.67], {radius: 10000, limit: 50}, function(data) {
             L.geoJson(data).addTo(map)
           });
