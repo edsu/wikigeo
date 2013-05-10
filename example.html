@@ -24,7 +24,6 @@
           // create the wikipedia layer and add to it using geojson results
           // for the given coordinates
 
-          //var wikipediaLayer = L.geoJson().addTo(map);
           geojson([-73.94, 40.67], {radius: 10000, limit: 50}, function(data) {
             L.geoJson(data).addTo(map)
           });
