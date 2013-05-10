@@ -1,7 +1,8 @@
 wikigeo
 =======
 
-wikigeo allows you to fetch [geojson](http://www.geojson.org/geojson-spec.html) for wikipedia articles around a given geographic coordinate. It can easily be slotted into working with [Leaflet's geojson support](http://leafletjs.com/examples/geojson.html).
+wikigeo allows you to fetch [geojson](http://www.geojson.org/geojson-spec.html)
+for [Wikipedia](http://wikipedia.org) articles around a given geographic coordinate. It can easily be slotted into working with [Leaflet's geojson support](http://leafletjs.com/examples/geojson.html).
 
 Basics
 ------
@@ -16,7 +17,7 @@ geojson([-73.94, 40.67], function(data) {
 });
 ```
 
-The geojson this call would receive should look something like:
+The geojson for this call should look something like:
 
 ```javascript
 {
