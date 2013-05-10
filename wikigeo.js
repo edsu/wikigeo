@@ -73,9 +73,11 @@ example:
     }
     if (opts.templates) {
       q.prop += "|templates";
+      q.tllimit = 500;
     }
     if (opts.categories) {
       q.prop += "|categories";
+      q.cllimit = 500;
     }
     continueParams = {
       extracts: "excontinue",

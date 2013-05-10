@@ -63,9 +63,11 @@ _search = (geo, opts, callback, results, queryContinue) =>
 
   if opts.templates
     q.prop += "|templates"
+    q.tllimit = 500
 
   if opts.categories
     q.prop += "|categories"
+    q.cllimit = 500
 
   # add continue parameters if they have been provided, these are
   # parameters that are used to fetch more results from the api
