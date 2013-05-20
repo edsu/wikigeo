@@ -93,6 +93,7 @@ example:
         }
       }
     }
+    console.log("fetching results from wikipedia api");
     return fetch(url, {
       params: q
     }, function(response) {
@@ -113,6 +114,9 @@ example:
       for (articleId in _ref) {
         article = _ref[articleId];
         resultsArticle = results.query.pages[articleId];
+        if (!resultsArticle) {
+          continue;
+        }
         for (prop in continueParams) {
           param = continueParams[prop];
           if (prop === 'extracts') {

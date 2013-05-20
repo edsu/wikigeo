@@ -83,6 +83,7 @@ _search = (geo, opts, callback, results, queryContinue) =>
       if queryContinue[name]
         q[param] = queryContinue[name][param]
 
+  console.log "fetching results from wikipedia api"
   fetch url, params: q, (response) =>
 
     if not results
@@ -98,6 +99,8 @@ _search = (geo, opts, callback, results, queryContinue) =>
 
     for articleId, article of response.query.pages
       resultsArticle = results.query.pages[articleId]
+      if not resultsArticle
+        continue
 
       # this parameter is singular in article data...
       for prop, param of continueParams
