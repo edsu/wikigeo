@@ -56,8 +56,8 @@ describe 'wikigeo', ->
         done()
 
     it 'limit should cause more results to come in', (done) ->
-      geojson [-77.0155, 39.0114], limit: 15, (data) ->
-        assert.ok data.features.length > 10 and data.features.length < 15
+      geojson [-77.0155, 39.0114], limit: 100, (data) ->
+        assert.ok data.features.length > 5 and data.features.length < 100
         done()
 
     it 'respects maximum limit', (done) ->
@@ -70,8 +70,7 @@ describe 'wikigeo', ->
       assert.throws doit, 'radius cannot be greater than 10000'
       done()
 
-    #it 'allows for non en wikipedias', (done) ->
-    #  console.log 'hi'
-    #  geojson [-77.0155, 39.0114], language: (data) ->
-    #    assert.match data.features[0].id, /http:\/\/fr\.wikipedia\.org/
-    #    done()
+    it 'allows for non en wikipedias', (done) ->
+      geojson [-77.0155, 39.0114], language: 'de', (data) ->
+        assert.match data.features[0].id, /http:\/\/de\.wikipedia\.org/
+        done()
