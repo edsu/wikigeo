@@ -2,6 +2,11 @@
   "name": "wikigeo",
   "version": "0.0.1",
   "main": "wikigeo",
+  "scripts": {
+    "build": "coffee -c wikigeo.coffee",
+    "watch": "coffee -w wikigeo.coffee",
+    "test": "mocha --colors --reporter nyan --compilers coffee:coffee-script/register test.coffee"
+  },
   "dependencies": {
     "request": "latest",
     "mocha": "latest",
