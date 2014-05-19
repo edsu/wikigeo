@@ -89,7 +89,7 @@ _search = (geo, opts, callback, results, queryContinue) =>
     if not results
       first = true
       results = response
-    else:
+    else
       first = false
 
     # no results, oh well just give them empty geojson
