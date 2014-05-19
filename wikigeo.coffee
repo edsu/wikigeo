@@ -1,6 +1,6 @@
 ###
 
-geojson takes a geo coordinate (longitude, latitude) and a callback that will 
+geojson takes a geo coordinate (longitude, latitude) and a callback that will
 be given geojson for Wikipedia articles that are relevant for that location
 
 options:
@@ -71,7 +71,7 @@ _search = (geo, opts, callback, results, queryContinue) =>
 
   # add continue parameters if they have been provided, these are
   # parameters that are used to fetch more results from the api
-  
+
   continueParams =
     extracts: "excontinue"
     coordinates: "cocontinue"
@@ -107,7 +107,7 @@ _search = (geo, opts, callback, results, queryContinue) =>
         if prop == 'extracts'
           prop = 'extract'
 
-        # continue if there are no new values to merge 
+        # continue if there are no new values to merge
         newValues = article[prop]
         if not newValues
           continue
@@ -193,7 +193,7 @@ _convert = (results, opts, callback) ->
 
 #
 # strip wikipedia specific information
-# 
+#
 
 _clean = (list) ->
   return (i.title.replace(/^.+?:/, '') for i in list)

@@ -36,22 +36,22 @@ describe 'wikigeo', ->
         done()
 
     it 'should be able to get summaries', (done) ->
-      geojson [-77.0155, 39.0114], {summaries: true}, (data) ->
+      geojson [-77.0155, 39.0114], summaries: true, (data) ->
         assert.ok data.features[0].properties.summary
         done()
 
     it 'should be able to get images', (done) ->
-      geojson [-77.0155, 39.0114], {images: true}, (data) ->
+      geojson [-77.0155, 39.0114], images: true, (data) ->
         assert.ok data.features[0].properties.image
         done()
 
     it 'should be able to get templates', (done) ->
-      geojson [-77.0155, 39.0114], {templates: true}, (data) ->
+      geojson [-77.0155, 39.0114], templates: true, (data) ->
         assert.ok data.features[0].properties.templates
         done()
 
     it 'should be able to get categories', (done) ->
-      geojson [-77.0155, 39.0114], {categories: true}, (data) ->
+      geojson [-77.0155, 39.0114], categories: true, (data) ->
         assert.ok data.features[0].properties.categories
         done()
 
