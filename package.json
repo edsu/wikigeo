@@ -8,9 +8,9 @@
     "test": "mocha --colors --reporter nyan --compilers coffee:coffee-script/register test.coffee"
   },
   "dependencies": {
-    "request": "latest",
-    "mocha": "latest",
-    "chai": "latest",
-    "coffee-script": "latest"
+    "chai": "^1.9.1",
+    "coffee-script": "^1.7.1",
+    "mocha": "^1.19.0",
+    "request": "^2.35.0"
   }
 }
