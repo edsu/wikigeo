@@ -83,7 +83,6 @@ _search = (geo, opts, callback, results, queryContinue) =>
       if queryContinue[name]
         q[param] = queryContinue[name][param]
 
-  console.log "fetching results from wikipedia api"
   fetch url, params: q, (response) =>
 
     if not results
