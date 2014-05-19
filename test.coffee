@@ -16,10 +16,12 @@ describe 'wikigeo', ->
 
         f = data.features[0]
         assert.ok f.id
-        assert.match f.id, /http:\/\/en.wikipedia.org\/wiki\/.+/
+        assert.ok f.properties.url
+        assert.match f.properties.url, /https:\/\/en.wikipedia.org\//
         assert.equal f.type, "Feature"
         assert.ok f.properties
         assert.ok f.properties.name
+        assert.ok f.properties.touched
         assert.ok f.geometry
         assert.equal f.geometry.type, "Point"
         assert.ok f.geometry.coordinates
@@ -43,6 +45,11 @@ describe 'wikigeo', ->
     it 'should be able to get images', (done) ->
       geojson [-77.0155, 39.0114], images: true, (data) ->
         assert.ok data.features[0].properties.image
+        done()
+
+    it 'should contain an imageUrl', (done) ->
+      geojson [-77.0155, 39.0114], images: true, (data) ->
+        assert.match data.features[0].properties.imageUrl, /https:\/\/upload.wikimedia.org\/wikipedia\/commons/
         done()
 
     it 'should be able to get templates', (done) ->
@@ -72,5 +79,5 @@ describe 'wikigeo', ->
 
     it 'allows for non en wikipedias', (done) ->
       geojson [-77.0155, 39.0114], language: 'de', (data) ->
-        assert.match data.features[0].id, /http:\/\/de\.wikipedia\.org/
+        assert.match data.features[0].properties.url, /https:\/\/de\.wikipedia\.org/
         done()

@@ -153,13 +153,15 @@ _convert = (results, opts, callback) ->
       continue
 
     titleEscaped = article.title.replace /\s/g, "_"
-    url = "http://#{ opts.language }.wikipedia.org/wiki/#{titleEscaped}"
+    url = "https://#{opts.language}.wikipedia.org/?curid=#{articleId}"
 
     feature =
-      id: url
+      id: articleId
       type: "Feature"
       properties:
+        url: url
         name: article.title
+        touched: article.touched
       geometry:
         type: "Point"
         coordinates: [
@@ -171,10 +173,14 @@ _convert = (results, opts, callback) ->
       if article.pageprops
         # TODO: convert to full URL
         # https://www.mediawiki.org/wiki/Manual:$wgHashedUploadDirectory
+        md5sum = require('crypto').createHash('md5').update(article.pageprops.page_image).digest("hex")
         image = article.pageprops.page_image
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/#{md5sum[0]}/#{md5sum[0..1]}/#{article.pageprops.page_image}"
       else
         image = null
+        imageUrl = null
       feature.properties.image = image
+      feature.properties.imageUrl = imageUrl
 
     if opts.templates
       feature.properties.templates = _clean(article.templates)
