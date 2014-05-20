@@ -170,9 +170,8 @@ _convert = (results, opts, callback) ->
         ]
 
     if opts.images
-      if article.pageprops
-        # TODO: convert to full URL
-        # https://www.mediawiki.org/wiki/Manual:$wgHashedUploadDirectory
+      if article.pageprops?.page_image
+        # @see https://www.mediawiki.org/wiki/Manual:$wgHashedUploadDirectory
         md5sum = require('crypto').createHash('md5').update(article.pageprops.page_image).digest("hex")
         image = article.pageprops.page_image
         imageUrl = "https://upload.wikimedia.org/wikipedia/commons/#{md5sum[0]}/#{md5sum[0..1]}/#{article.pageprops.page_image}"
