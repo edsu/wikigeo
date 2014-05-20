@@ -5,7 +5,6 @@
   "scripts": {
     "build":       "coffee --bare --compile --output lib src/wikigeo.coffee",
     "prepublish":  "coffee --bare --compile --output lib src/wikigeo.coffee",
-    "postpublish": "rm -rf lib",
     "watch":       "coffee -w --output lib src/wikigeo.coffee",
     "test":        "mocha --colors --reporter nyan --compilers coffee:coffee-script/register test/wikigeo.coffee"
   },
