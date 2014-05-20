@@ -1,6 +1,6 @@
 {
   "name": "wikigeo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/wikigeo",
   "scripts": {
     "build":       "coffee --bare --compile --output lib src/wikigeo.coffee",
@@ -10,9 +10,11 @@
     "test":        "mocha --colors --reporter nyan --compilers coffee:coffee-script/register test/wikigeo.coffee"
   },
   "dependencies": {
-    "chai": "^1.9.1",
     "coffee-script": "^1.7.1",
-    "mocha": "^1.19.0",
     "request": "^2.35.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.19.0"
   }
 }
