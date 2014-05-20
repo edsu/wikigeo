@@ -1,6 +1,8 @@
 wikigeo
 =======
 
+[![Build Status](https://travis-ci.org/edsu/wikigeo.svg)](http://travis-ci.org/edsu/wikigeo)
+
 wikigeo allows you to fetch [geojson](http://www.geojson.org/geojson-spec.html)
 for [Wikipedia](http://wikipedia.org) articles around a given geographic
 coordinate. It can be easily added to a map using [Leaflet's geojson
