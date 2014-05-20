@@ -1,7 +1,7 @@
 {
   "name": "wikigeo",
   "version": "1.0.0",
-  "main": "wikigeo",
+  "main": "lib/wikigeo",
   "scripts": {
     "build":       "coffee --bare --compile --output lib src/wikigeo.coffee",
     "prepublish":  "coffee --bare --compile --output lib src/wikigeo.coffee",
