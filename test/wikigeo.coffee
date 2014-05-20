@@ -1,4 +1,4 @@
-wikigeo = require './wikigeo'
+wikigeo = require '../src/wikigeo'
 geojson = wikigeo.geojson
 assert = require('chai').assert
 
@@ -16,10 +16,12 @@ describe 'wikigeo', ->
 
         f = data.features[0]
         assert.ok f.id
-        assert.match f.id, /http:\/\/en.wikipedia.org\/wiki\/.+/
+        assert.ok f.properties.url
+        assert.match f.properties.url, /https:\/\/en.wikipedia.org\//
         assert.equal f.type, "Feature"
         assert.ok f.properties
         assert.ok f.properties.name
+        assert.ok f.properties.touched
         assert.ok f.geometry
         assert.equal f.geometry.type, "Point"
         assert.ok f.geometry.coordinates
@@ -36,28 +38,33 @@ describe 'wikigeo', ->
         done()
 
     it 'should be able to get summaries', (done) ->
-      geojson [-77.0155, 39.0114], {summaries: true}, (data) ->
+      geojson [-77.0155, 39.0114], summaries: true, (data) ->
         assert.ok data.features[0].properties.summary
         done()
 
     it 'should be able to get images', (done) ->
-      geojson [-77.0155, 39.0114], {images: true}, (data) ->
+      geojson [-77.0155, 39.0114], images: true, (data) ->
         assert.ok data.features[0].properties.image
         done()
 
+    it 'should contain an imageUrl', (done) ->
+      geojson [-77.0155, 39.0114], images: true, (data) ->
+        assert.match data.features[0].properties.imageUrl, /https:\/\/upload.wikimedia.org\/wikipedia\/commons/
+        done()
+
     it 'should be able to get templates', (done) ->
-      geojson [-77.0155, 39.0114], {templates: true}, (data) ->
+      geojson [-77.0155, 39.0114], templates: true, (data) ->
         assert.ok data.features[0].properties.templates
         done()
 
     it 'should be able to get categories', (done) ->
-      geojson [-77.0155, 39.0114], {categories: true}, (data) ->
+      geojson [-77.0155, 39.0114], categories: true, (data) ->
         assert.ok data.features[0].properties.categories
         done()
 
     it 'limit should cause more results to come in', (done) ->
-      geojson [-77.0155, 39.0114], limit: 15, (data) ->
-        assert.ok data.features.length > 10 and data.features.length < 15
+      geojson [-77.0155, 39.0114], limit: 100, (data) ->
+        assert.ok data.features.length > 5 and data.features.length < 100
         done()
 
     it 'respects maximum limit', (done) ->
@@ -70,8 +77,7 @@ describe 'wikigeo', ->
       assert.throws doit, 'radius cannot be greater than 10000'
       done()
 
-    #it 'allows for non en wikipedias', (done) ->
-    #  console.log 'hi'
-    #  geojson [-77.0155, 39.0114], language: (data) ->
-    #    assert.match data.features[0].id, /http:\/\/fr\.wikipedia\.org/
-    #    done()
+    it 'allows for non en wikipedias', (done) ->
+      geojson [-77.0155, 39.0114], language: 'de', (data) ->
+        assert.match data.features[0].properties.url, /https:\/\/de\.wikipedia\.org/
+        done()

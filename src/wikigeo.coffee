@@ -1,6 +1,6 @@
 ###
 
-geojson takes a geo coordinate (longitude, latitude) and a callback that will 
+geojson takes a geo coordinate (longitude, latitude) and a callback that will
 be given geojson for Wikipedia articles that are relevant for that location
 
 options:
@@ -71,7 +71,7 @@ _search = (geo, opts, callback, results, queryContinue) =>
 
   # add continue parameters if they have been provided, these are
   # parameters that are used to fetch more results from the api
-  
+
   continueParams =
     extracts: "excontinue"
     coordinates: "cocontinue"
@@ -83,13 +83,12 @@ _search = (geo, opts, callback, results, queryContinue) =>
       if queryContinue[name]
         q[param] = queryContinue[name][param]
 
-  console.log "fetching results from wikipedia api"
   fetch url, params: q, (response) =>
 
     if not results
       first = true
       results = response
-    else:
+    else
       first = false
 
     # no results, oh well just give them empty geojson
@@ -107,7 +106,7 @@ _search = (geo, opts, callback, results, queryContinue) =>
         if prop == 'extracts'
           prop = 'extract'
 
-        # continue if there are no new values to merge 
+        # continue if there are no new values to merge
         newValues = article[prop]
         if not newValues
           continue
@@ -154,13 +153,15 @@ _convert = (results, opts, callback) ->
       continue
 
     titleEscaped = article.title.replace /\s/g, "_"
-    url = "http://#{ opts.language }.wikipedia.org/wiki/#{titleEscaped}"
+    url = "https://#{opts.language}.wikipedia.org/?curid=#{articleId}"
 
     feature =
-      id: url
+      id: articleId
       type: "Feature"
       properties:
+        url: url
         name: article.title
+        touched: article.touched
       geometry:
         type: "Point"
         coordinates: [
@@ -172,10 +173,14 @@ _convert = (results, opts, callback) ->
       if article.pageprops
         # TODO: convert to full URL
         # https://www.mediawiki.org/wiki/Manual:$wgHashedUploadDirectory
+        md5sum = require('crypto').createHash('md5').update(article.pageprops.page_image).digest("hex")
         image = article.pageprops.page_image
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/#{md5sum[0]}/#{md5sum[0..1]}/#{article.pageprops.page_image}"
       else
         image = null
+        imageUrl = null
       feature.properties.image = image
+      feature.properties.imageUrl = imageUrl
 
     if opts.templates
       feature.properties.templates = _clean(article.templates)
@@ -193,7 +198,7 @@ _convert = (results, opts, callback) ->
 
 #
 # strip wikipedia specific information
-# 
+#
 
 _clean = (list) ->
   return (i.title.replace(/^.+?:/, '') for i in list)

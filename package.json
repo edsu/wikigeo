@@ -1,11 +1,18 @@
 {
   "name": "wikigeo",
-  "version": "0.0.1",
-  "main": "wikigeo",
+  "version": "1.0.0",
+  "main": "lib/wikigeo",
+  "scripts": {
+    "build":       "coffee --bare --compile --output lib src/wikigeo.coffee",
+    "prepublish":  "coffee --bare --compile --output lib src/wikigeo.coffee",
+    "postpublish": "rm -rf lib",
+    "watch":       "coffee -w --output lib src/wikigeo.coffee",
+    "test":        "mocha --colors --reporter nyan --compilers coffee:coffee-script/register test/wikigeo.coffee"
+  },
   "dependencies": {
-    "request": "latest",
-    "mocha": "latest",
-    "chai": "latest",
-    "coffee-script": "latest"
+    "chai": "^1.9.1",
+    "coffee-script": "^1.7.1",
+    "mocha": "^1.19.0",
+    "request": "^2.35.0"
   }
 }
