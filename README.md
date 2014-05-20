@@ -30,114 +30,34 @@ The geojson for this call should look something like:
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "http://en.wikipedia.org/wiki/New_York_City",
+      "id": "30854694",
       "type": "Feature",
       "properties": {
-        "name": "New York City"
-      },
+        "url": "https://en.wikipedia.org/?curid=30854694",
+        "name": "Jewish Children\'s Museum",
+        "touched": "2014-05-18T12:50:57Z"
+    },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.94,
-          40.67
+          -73.9419,
+          40.6689
         ]
       }
     },
     {
-      "id": "http://en.wikipedia.org/wiki/Kingston_Avenue_(IRT_Eastern_Parkway_Line)",
+      "id": "729460",
       "type": "Feature",
       "properties": {
-        "name": "Kingston Avenue (IRT Eastern Parkway Line)"
+        "url": "https://en.wikipedia.org/?curid=729460",
+        "name": "Kingston Avenue (IRT Eastern Parkway Line)",
+        "touched": "2014-05-13T00:12:17Z"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           -73.9422,
           40.6694
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/Crown_Heights_–_Utica_Avenue_(IRT_Eastern_Parkway_Line)",
-      "type": "Feature",
-      "properties": {
-        "name": "Crown Heights – Utica Avenue (IRT Eastern Parkway Line)"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.9312,
-          40.6688
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/Brooklyn_Children's_Museum",
-      "type": "Feature",
-      "properties": {
-        "name": "Brooklyn Children's Museum"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.9439,
-          40.6745
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/770_Eastern_Parkway",
-      "type": "Feature",
-      "properties": {
-        "name": "770 Eastern Parkway"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.9429,
-          40.669
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/Eastern_Parkway_(Brooklyn)",
-      "type": "Feature",
-      "properties": {
-        "name": "Eastern Parkway (Brooklyn)"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.9371,
-          40.6691
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/Paul_Robeson_High_School_for_Business_and_Technology",
-      "type": "Feature",
-      "properties": {
-        "name": "Paul Robeson High School for Business and Technology"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.939,
-          40.6755
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/Pathways_in_Technology_Early_College_High_School",
-      "type": "Feature",
-      "properties": {
-        "name": "Pathways in Technology Early College High School"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.939,
-          40.6759
         ]
       }
     }
@@ -187,89 +107,105 @@ call:
 {
   "type": "FeatureCollection",
   "features": [
-    {
-      "id": "http://en.wikipedia.org/wiki/Silver_Spring,_Maryland",
+     {
+      "id": "43485",
       "type": "Feature",
       "properties": {
+        "url": "https://en.wikipedia.org/?curid=43485",
         "name": "Silver Spring, Maryland",
-        "image": "Downtown_silver_spring_wayne.jpg",
-        "templates": [
+        "touched": "2014-05-20T04:25:48Z",
+        "image": "Silver_Spring_Montage.jpg",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/48/Silver_Spring_Montage.jpg",
+        "templates": ["!",
           "-",
           "Abbr",
           "Ambox",
-          "Ambox/category",
-          "Ambox/small",
-          "Basepage subpage",
           "Both",
+          "Br separated entries",
           "Category handler",
-          "Category handler/blacklist",
-          "Category handler/numbered"
+          "Citation",
+          "Citation needed",
+          "Cite news",
+          "Cite web",
+          "Column-width",
+          "Commons",
+          "Commons category",
+          "Convert",
+          "Coord",
+          "Country data Maryland",
+          "Country data United States",
+          "Country data United States of America",
+          "DCMetroArea",
+          "Dead link",
+          "Expand section",
+          "Fix",
+          "Fix/category",
+          "Flag",
+          "Flag/core",
+          "Flagicon image",
+          "GR",
+          "Geobox coor",
+          "Geographic reference",
+          "Infobox",
+          "Infobox settlement",
+          "Infobox settlement/areadisp",
+          "Infobox settlement/densdisp",
+          "Infobox settlement/impus",
+          "Infobox settlement/lengthdisp",
+          "Infobox settlement/pref",
+          "Largest cities",
+          "Largest cities of Maryland",
+          "Maryland",
+          "Max",
+          "Max/2",
+          "Montgomery County, Maryland",
+          "Navbar",
+          "Navbox",
+          "Navbox subgroup",
+          "Navboxes",
+          "Nowrap",
+          "Order of magnitude",
+          "Precision",
+          "Reflist",
+          "Rnd",
+          "Side box",
+          "Sister",
+          "Talk other",
+          "Transclude",
+          "US Census population",
+          "US county navigation box",
+          "US state navigation box",
+          "Unbulleted list",
+          "Wikivoyage",
+          "National Register of Historic Places in Maryland",
+          "Navbar",
+          "Navbox",
+          "Reflist",
+          "Str left",
+          "Talk other",
+          "Transclude",
+          "Arguments",
+          "Citation/CS1",
+          "Citation/CS1/Configuration",
+          "Citation/CS1/Date validation",
+          "Citation/CS1/Whitelist",
+          "Coordinates",
+          "HtmlBuilder",
+          "Infobox",
+          "Location map",
+          "Math",
+          "Navbar",
+          "Navbox",
+          "Yesno"
         ],
-        "summary": "Silver Spring is an unincorporated area and census-designated place (CDP) in Montgomery County, Maryland, United States. It had a population of 71,452 at the 2010 census, making it the fourth most populous place in Maryland, after Baltimore, Columbia, and Germantown.\nThe urbanized, oldest, and southernmost part of Silver Spring is a major business hub that lies at the north apex of Washington, D.C. As of 2004, the Central Business District (CBD) held 7,254,729 square feet (673,986 m2) of office space, 5216 dwelling units and 17.6 acres (71,000 m2) of parkland. The population density of this CBD area of Silver Spring was 15,600 per square mile all within 360 acres (1.5 km2) and approximately 2.5 square miles (6 km2) in the CBD/downtown area. The community has recently undergone a significant renaissance, with the addition of major retail, residential, and office developments.\nSilver Spring takes its name from a mica-flecked spring discovered there in 1840 by Francis Preston Blair, who subsequently bought much of the surrounding land. Acorn Park, tucked away in an area of south Silver Spring away from the main downtown area, is believed to be the site of the original spring.\n\n",
-        "categories": [
-          "All articles to be expanded",
-          "All articles with dead external links",
-          "All articles with unsourced statements",
-          "Articles to be expanded from June 2008",
-          "Articles with dead external links from July 2009",
-          "Articles with dead external links from October 2010",
-          "Articles with dead external links from September 2010",
-          "Articles with unsourced statements from February 2007",
-          "Articles with unsourced statements from May 2009",
-          "Commons category template with no category set"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -77.019,
-          39.0042
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/Montgomery_Blair_High_School",
-      "type": "Feature",
-      "properties": {
-        "name": "Montgomery Blair High School",
-        "image": "MBHS_Seal.png",
-        "templates": [
-          "Ambox",
-          "Ambox/category",
-          "Ambox/core"
-        ],
-        "summary": "Montgomery Blair High School (MBHS) is a public high school located in unincorporated Silver Spring in Montgomery County, Maryland, United States.\nThe school was named after Montgomery Blair, a lawyer who represented Dred Scott in his United States Supreme Court case and who served as Postmaster General under President Abraham Lincoln. It originally opened in 1925 as Takoma Park-Silver Spring High School. In 1935, however, Montgomery Blair High School opened at 313 Wayne Avenue, a location overlooking Sligo Creek, now occupied by Silver Spring International Middle School. In 1998, the campus moved two miles (3 km) north to the Kay Tract, a long-vacant tract of land adjacent to the Capital Beltway.\nThe school has a magnet program and a Communication Arts Program (CAP), which draw students from both the Silver Spring area and across Montgomery County, and make up approximately 20% of Blair's student population. It is a member of the National Consortium for Specialized Secondary Schools of Mathematics, Science and Technology (NCSSSMST).",
-        "categories": [
-          "1925 establishments in Maryland",
-          "All articles needing additional references",
-          "All articles with dead external links",
-          "All articles with unsourced statements",
-          "Articles needing additional references from August 2010",
-          "Articles needing additional references from January 2013",
-          "Articles with dead external links from January 2013"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -77.0116,
-          39.0181
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/Polychrome_Historic_District",
-      "type": "Feature",
-      "properties": {
-        "name": "Polychrome Historic District",
-        "image": "Polychrome_Historic_District_Apr_10.JPG",
-        "templates": [
-          "Asbox"
-        ],
-        "summary": "The Polychrome Historic District is a national historic district in the Four Corners neighborhood in Silver Spring, Montgomery County, Maryland. It recognizes a group of five houses built by John Joseph Earley in 1934 and 1935. Earley used precast concrete panels with brightly colored aggregate to produce the polychrome effect, with Art Deco details. The two-inch-thick panels were attached to a conventional wood frame. Earley was interested in the use of mass-production techniques to produce small, inexpensive houses, paralleling Frank Lloyd Wright's Usonian house concepts.",
-        "categories": [
-          "Art Deco architecture in Maryland",
-          "Historic districts in Maryland"
+        "summary": "The Polychrome Historic District is a national historic district in the Four Corners neighborhood in Silver Spring, Montgomery County, Maryland. It recognizes a group of five houses built by John Joseph Earley in 1934 and 1935. Earley used precast concrete panels with brightly colored aggregate to produce the polychrome effect, with Art Deco details. The two-inch-thick panels were attached to a conventional wood frame. Earley was interested in the use of mass-production techniques to produce small, inexpensive houses, paralleling Frank Lloyd Wright\'s Usonian house concepts.",
+        "categories": ["Art Deco architecture in Maryland",
+          "Coordinates on Wikidata",
+          "Historic American Buildings Survey in Maryland",
+          "Historic districts in Maryland",
+          "Houses in Montgomery County, Maryland",
+          "Houses on the National Register of Historic Places in Maryland",
+          "Maryland Registered Historic Place stubs"
         ]
       },
       "geometry": {
@@ -277,37 +213,6 @@ call:
         "coordinates": [
           -77.0158,
           39.0181
-        ]
-      }
-    },
-    {
-      "id": "http://en.wikipedia.org/wiki/Four_Corners_(Silver_Spring,_Maryland)",
-      "type": "Feature",
-      "properties": {
-        "name": "Four Corners (Silver Spring, Maryland)",
-        "templates": [
-          "Asbox",
-          "Cite web",
-          "Coord",
-          "Maryland-geo-stub",
-          "Navbar",
-          "Reflist",
-          "Talk other",
-          "Transclude",
-          "Citation/CS1"
-        ],
-        "summary": "Four Corners is a neighborhood located in Silver Spring, Maryland, United States.",
-        "categories": [
-          "Maryland geography stubs",
-          "Neighborhoods in Montgomery County, Maryland",
-          "Silver Spring, Maryland"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -77.0131,
-          39.02
         ]
       }
     }
@@ -349,23 +254,22 @@ then you'll need to install some dependencies for testing:
 
     npm install
 
-This will install cake, which you can use to run the tests:
+This will install mocha, which you can use to run the tests, simply do:
 
-    cake test
+    npm test
 
-and you should see something like:
+and you should see something like a nyan cat:
 
 ```
-  wikigeo
-    geojson
-      ✓ should work with just lat/lon (202ms)
-      ✓ should return empty results when there are no hits (136ms)
-      ✓ limit should cause more results to come in (438ms)
-      ✓ respects maximum limit
-      ✓ respects maximum radius
+  > wikigeo@1.0.0 test /home/despairblue/vcs/git/wikigeo
+  > mocha --colors --reporter nyan --compilers coffee:coffee-script/register test/wikigeo.coffee
 
+   11  -_-_-_-_-_-__,------,
+   0   -_-_-_-_-_-__|  /\_/\ 
+   0   -_-_-_-_-_-_~|_( ^ .^) 
+       -_-_-_-_-_-_ ""  "" 
 
-  5 tests complete (781 ms)
+    11 passing (5s)
 ```
 
 License

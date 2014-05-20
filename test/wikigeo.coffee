@@ -1,4 +1,4 @@
-wikigeo = require './wikigeo'
+wikigeo = require '../src/wikigeo'
 geojson = wikigeo.geojson
 assert = require('chai').assert
 
