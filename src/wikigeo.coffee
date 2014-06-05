@@ -208,6 +208,7 @@ _clean = (list) ->
 
 _fetch = (uri, opts, callback) ->
   request uri, qs: opts.params, json: true, (e, r, data) ->
+    throw e if e
     callback(data)
 
 _browserFetch = (uri, opts, callback) ->
