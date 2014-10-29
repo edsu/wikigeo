@@ -213,7 +213,7 @@ _fetch = (uri, opts, callback) ->
 
 _browserFetch = (uri, opts, callback) ->
   $.ajax url: uri, data: opts.params, dataType: "jsonp", success: (response) ->
-      callback(response)
+    callback(response)
 
 try
   request = require('request')
