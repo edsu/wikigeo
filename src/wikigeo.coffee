@@ -18,7 +18,7 @@ example:
 
 ###
 
-geojson = (geo, opts={}, callback) =>
+geojson = (geo, opts={}, callback) ->
   if typeof opts == "function"
     callback = opts
     opts = {}
@@ -41,7 +41,7 @@ geojson = (geo, opts={}, callback) =>
 # recursive function to collect the results from all search result pages
 #
 
-_search = (geo, opts, callback, results, queryContinue) =>
+_search = (geo, opts, callback, results, queryContinue) ->
   url = "http://#{ opts.language }.wikipedia.org/w/api.php"
   q =
     action: "query"
@@ -83,7 +83,7 @@ _search = (geo, opts, callback, results, queryContinue) =>
       if queryContinue[name]
         q[param] = queryContinue[name][param]
 
-  fetch url, params: q, (response) =>
+  fetch url, params: q, (response) ->
 
     if not results
       first = true
