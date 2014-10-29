@@ -18,6 +18,9 @@ example:
 
 ###
 
+crypto  = require 'crypto'
+request = require 'request'
+
 geojson = (geo, opts={}, callback) ->
   if typeof opts == "function"
     callback = opts
@@ -172,7 +175,7 @@ _convert = (results, opts, callback) ->
     if opts.images
       if article.pageprops?.page_image
         # @see https://www.mediawiki.org/wiki/Manual:$wgHashedUploadDirectory
-        md5sum = require('crypto').createHash('md5').update(article.pageprops.page_image).digest("hex")
+        md5sum = crypto.createHash('md5').update(article.pageprops.page_image).digest("hex")
         image = article.pageprops.page_image
         imageUrl = "https://upload.wikimedia.org/wikipedia/commons/#{md5sum[0]}/#{md5sum[0..1]}/#{article.pageprops.page_image}"
       else
@@ -216,7 +219,6 @@ _browserFetch = (uri, opts, callback) ->
     callback(response)
 
 try
-  request = require('request')
   fetch = _fetch
 catch error
   fetch = _browserFetch
