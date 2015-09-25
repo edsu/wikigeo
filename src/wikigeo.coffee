@@ -87,7 +87,8 @@ _search = (geo, opts, callback, results, queryContinue) ->
       if queryContinue[name]
         q[param] = queryContinue[name][param]
 
-  fetch url, params: q, (response) ->
+  fetch url, params: q, (error, response) ->
+    return callback(error) if error
 
     if not results
       first = true
@@ -212,8 +213,7 @@ _clean = (list) ->
 
 _fetch = (uri, opts, callback) ->
   request uri, qs: opts.params, json: true, (e, r, data) ->
-    throw e if e
-    callback(data)
+    callback(e, data)
 
 _browserFetch = (uri, opts, callback) ->
   $.ajax url: uri, data: opts.params, dataType: "jsonp", success: (response) ->
