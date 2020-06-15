@@ -18,7 +18,11 @@ example:
 
 ###
 
-geojson = (geo, opts={}, callback) =>
+utf8    = require 'utf8'
+crypto  = require 'crypto'
+request = require 'request'
+
+geojson = (geo, opts={}, callback) ->
   if typeof opts == "function"
     callback = opts
     opts = {}
@@ -41,7 +45,7 @@ geojson = (geo, opts={}, callback) =>
 # recursive function to collect the results from all search result pages
 #
 
-_search = (geo, opts, callback, results, queryContinue) =>
+_search = (geo, opts, callback, results, queryContinue) ->
   url = "http://#{ opts.language }.wikipedia.org/w/api.php"
   q =
     action: "query"
@@ -83,7 +87,8 @@ _search = (geo, opts, callback, results, queryContinue) =>
       if queryContinue[name]
         q[param] = queryContinue[name][param]
 
-  fetch url, params: q, (response) =>
+  fetch url, params: q, (error, response) ->
+    return callback(error) if error
 
     if not results
       first = true
@@ -172,7 +177,7 @@ _convert = (results, opts, callback) ->
     if opts.images
       if article.pageprops?.page_image
         # @see https://www.mediawiki.org/wiki/Manual:$wgHashedUploadDirectory
-        md5sum = require('crypto').createHash('md5').update(article.pageprops.page_image).digest("hex")
+        md5sum = crypto.createHash('md5').update(utf8.encode(article.pageprops.page_image)).digest("hex")
         image = article.pageprops.page_image
         imageUrl = "https://upload.wikimedia.org/wikipedia/commons/#{md5sum[0]}/#{md5sum[0..1]}/#{article.pageprops.page_image}"
       else
@@ -208,14 +213,13 @@ _clean = (list) ->
 
 _fetch = (uri, opts, callback) ->
   request uri, qs: opts.params, json: true, (e, r, data) ->
-    callback(data)
+    callback(e, data)
 
 _browserFetch = (uri, opts, callback) ->
   $.ajax url: uri, data: opts.params, dataType: "jsonp", success: (response) ->
-      callback(response)
+    callback(response)
 
 try
-  request = require('request')
   fetch = _fetch
 catch error
   fetch = _browserFetch

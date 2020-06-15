@@ -8,9 +8,14 @@
     "watch":       "coffee -w --output lib src/wikigeo.coffee",
     "test":        "mocha --colors --reporter nyan --compilers coffee:coffee-script/register test/wikigeo.coffee"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:edsu/wikigeo.git"
+  },
   "dependencies": {
     "coffee-script": "^1.7.1",
-    "request": "^2.35.0"
+    "request": "^2.35.0",
+    "utf8": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",

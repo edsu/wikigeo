@@ -64,7 +64,7 @@ describe 'wikigeo', ->
 
     it 'limit should cause more results to come in', (done) ->
       geojson [-77.0155, 39.0114], limit: 100, (data) ->
-        assert.ok data.features.length > 5 and data.features.length < 100
+        assert.ok data.features.length > 5 and data.features.length < 101
         done()
 
     it 'respects maximum limit', (done) ->
